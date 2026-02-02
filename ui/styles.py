@@ -11,6 +11,22 @@ def apply_custom_styles():
             100% {background-position: 0% 50%;}
         }
 
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+
         /* Main App Background */
         .stApp {
             background: linear-gradient(-45deg, #f8f9fa, #e9ecef, #dfe9f3, #ffffff);
@@ -19,24 +35,44 @@ def apply_custom_styles():
             font-family: 'Outfit', sans-serif;
         }
 
-        /* Headings */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Outfit', sans-serif;
-            color: #1e1e1e;
-            font-weight: 700;
+        /* Animated Title Icon */
+        h1 span {
+            display: inline-block;
+            animation: breathe 3s ease-in-out infinite;
         }
-        
+
+        /* Universal Emoji Animation for headers and subheaders */
+        h1, h2, h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Metric Cards Icon Animation */
+        [data-testid="stMetricLabel"] {
+            font-size: 1rem !important;
+            color: #6c757d;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Targeting the emoji in the label */
+        [data-testid="stMetricLabel"]::before {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
         /* Metric Cards */
         [data-testid="stMetricValue"] {
             font-size: 1.8rem !important;
             color: #4361ee;
             font-weight: 700;
         }
-        [data-testid="stMetricLabel"] {
-            font-size: 1rem !important;
-            color: #6c757d;
-            font-weight: 500;
-        }
+        
         [data-testid="stMetric"] {
             background-color: white;
             padding: 15px;
@@ -44,6 +80,32 @@ def apply_custom_styles():
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             text-align: center;
             border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        [data-testid="stMetric"]:hover {
+            transform: translateY(-5px);
+            border-color: #4361ee;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation for Info boxes and alerts */
+        .stAlert [data-testid="stNotificationContent"]::before {
+            display: inline-block;
+            animation: wobble 2s ease-in-out infinite;
+            font-size: 1.5rem;
+        }
+
+        /* Animation for Sliders Label Icons */
+        [data-testid="stWidgetLabel"] p {
+             display: flex;
+             align-items: center;
+             gap: 5px;
+        }
+
+        /* Subheader Emojis */
+        h3 {
+            animation: float 4s ease-in-out infinite;
         }
 
         /* Buttons */
@@ -54,13 +116,14 @@ def apply_custom_styles():
             padding: 0.5rem 1rem;
             border: none;
             transition: all 0.2s ease;
+            background: linear-gradient(45deg, #4361ee, #3a0ca3);
+            color: white;
         }
         
-        /* Primary actions (approximate) - Streamlit doesn't easily distinguish safely, 
-           but we can style the default button to look premium */
         .stButton > button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(67, 97, 238, 0.3);
+            filter: brightness(1.1);
         }
 
         /* Custom Card Class for specific containers if we wrap them */

@@ -7,7 +7,7 @@ def show_header(state):
     """
     st.markdown("""
     <h1 style='text-align: center; background: -webkit-linear-gradient(45deg, #4361ee, #3a0ca3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;'>
-        PocketWise Student 🎓
+        PocketWise Student <span>🎓</span>
     </h1>
     """, unsafe_allow_html=True)
     
