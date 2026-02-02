@@ -1,3 +1,13 @@
+---
+title: PocketWise Student
+emoji: 🎓
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+app_file: app.py
+pinned: false
+---
+
 # PocketWise Student 🎓💰
 
 **PocketWise Student** is an interactive financial literacy simulation game designed to teach students the art of money management. Built with Python and Streamlit, it gamifies the journey from a college student with a limited stipend to a working graduate managing a salary, debt, and investments.
